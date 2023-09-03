@@ -1,0 +1,26 @@
+# Version de docker-compose que utilizamos
+version: '3.5'
+
+services:
+  apache7-sevice:
+    image: apache7
+
+    container_name: apache7-container
+
+    volumes:
+      - ./www:/var/www/html
+
+    networks:
+      red_1:
+        ipv4_address: 172.31.0.3
+
+    hostname: servidor_web
+
+# En networks definimos el tipo de red que queremos para nuestros contendores.
+networks:
+  red_1:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.31.0.0/24
+          gateway: 172.31.0.1
