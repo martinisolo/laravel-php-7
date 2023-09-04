@@ -3,7 +3,7 @@ FROM php:7.2-apache
 
 RUN apt-get update && apt-get install -y nano zip unzip libzip-dev
 
-RUN docker-php-ext-install zip
+RUN docker-php-ext-install zip && docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql
 
 
 RUN mv /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.bak
